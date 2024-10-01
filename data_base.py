@@ -19,25 +19,25 @@ Base = declarative_base()
 UUID = String(36)
 class Product(Base):
 
-    __tablename__ = 'product_table'
-    id = Column(UUID,primary_key=True)
+    __tablename__ = 'Product'
+    id = Column(Integer,primary_key=True, autoincrement=True)
     name = Column(String)
     description = Column(String)
-    price = Column(Integer)
+    price = Column(Numeric(10, 2))
     amount = Column(Integer)
 
 
 class Order(Base):
 
-    __tablename__ = 'order_table'
-    id = Column(UUID,primary_key=True)
+    __tablename__ = 'Order'
+    id = Column(Integer,primary_key=True)
     date = Column(Date)
     status = Column(String(30))
 
 class OrderItem(Base):
 
-    __tablename__ = 'order_item_table'
-    id = Column(UUID,primary_key=True)
-    order_id = Column(UUID)
-    item_id = Column(UUID)
+    __tablename__ = 'OrderItem'
+    id = Column(Integer,primary_key=True)
+    order_id = Column(Integer)
+    item_id = Column(Integer)
     amount = Column(Integer)

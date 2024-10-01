@@ -1,0 +1,258 @@
+2024-10-01 20:08:23,031 - DEBUG 
+Получаем список продуктов 
+
+2024-10-01 20:08:57,849 - DEBUG 
+Получаем список продуктов 
+
+2024-10-01 20:08:58,934 - DEBUG 
+Получаем список продуктов 
+
+2024-10-01 20:13:24,345 - DEBUG 
+Получаем список продуктов 
+
+2024-10-01 20:16:30,582 - DEBUG 
+Получаем список продуктов 
+
+2024-10-01 20:16:55,424 - DEBUG 
+Получаем список продуктов 
+
+2024-10-01 20:17:18,007 - DEBUG 
+Получаем список продуктов 
+
+2024-10-01 20:19:21,689 - DEBUG 
+Получаем инфу о товаре 
+
+2024-10-01 20:21:39,287 - DEBUG 
+Получаем список продуктов 
+
+2024-10-01 20:21:40,909 - DEBUG 
+Получаем инфу о товаре 
+
+2024-10-01 20:22:00,802 - DEBUG 
+Получаем инфу о товаре 
+
+2024-10-01 20:22:27,249 - DEBUG 
+Получаем инфу о товаре 
+
+2024-10-01 20:22:35,193 - DEBUG 
+Получаем инфу о товаре 
+
+2024-10-01 20:22:39,802 - DEBUG 
+Получаем список продуктов 
+
+2024-10-01 20:22:45,107 - DEBUG 
+Получаем инфу о товаре 
+
+2024-10-01 20:27:00,066 - DEBUG 
+Получаем список продуктов 
+
+2024-10-01 20:28:24,989 - DEBUG 
+Создаем продукт
+{'data': Product(name='apple', decs='red', price=1, amount=1)} 
+
+2024-10-01 20:29:52,066 - DEBUG 
+Создаем продукт
+{'data': '{   "name": "apple",   "decs": "red",   "price": 1,   "amount": 1 }'} 
+
+2024-10-01 20:30:15,388 - DEBUG 
+Создаем продукт
+{'data': Product(name='apple', decs='red', price=1, amount=1)} 
+
+2024-10-01 20:30:43,431 - DEBUG 
+Создаем продукт
+{'data': Product(name='apple', decs='red', price=1, amount=1)} 
+
+2024-10-01 20:31:42,191 - DEBUG 
+Создаем продукт
+{'data': Product(name='apple', decs='red', price=1, amount=1)} 
+
+2024-10-01 20:35:13,993 - DEBUG 
+Создаем продукт
+{'data': Product(name='apple', description='red', price=1, amount=1)} 
+
+2024-10-01 20:40:16,960 - DEBUG 
+Создаем продукт
+{'data': Product(name='apple', description='red', price=1, amount=1)} 
+
+2024-10-01 20:40:17,094 - ERROR 
+Ошибка при внесении изменений в базу данных
+{'error': '(psycopg2.errors.NotNullViolation) ОШИБКА:  нулевое значение в столбце "id" нарушает ограничение NOT NULL\nDETAIL:  Ошибочная строка содержит (null, apple, red, 1, 1).\n\n[SQL: INSERT INTO "Product" (name, description, price, amount) VALUES (%(name)s, %(description)s, %(price)s, %(amount)s) RETURNING "Product".id]\n[parameters: {\'name\': \'apple\', \'description\': \'red\', \'price\': 1, \'amount\': 1}]\n(Background on this error at: https://sqlalche.me/e/20/gkpj)'} 
+
+2024-10-01 20:40:17,094 - ERROR 
+Ошибка при внесении изменений в базу данных
+{'error': '(psycopg2.errors.NotNullViolation) ОШИБКА:  нулевое значение в столбце "id" нарушает ограничение NOT NULL\nDETAIL:  Ошибочная строка содержит (null, apple, red, 1, 1).\n\n[SQL: INSERT INTO "Product" (name, description, price, amount) VALUES (%(name)s, %(description)s, %(price)s, %(amount)s) RETURNING "Product".id]\n[parameters: {\'name\': \'apple\', \'description\': \'red\', \'price\': 1, \'amount\': 1}]\n(Background on this error at: https://sqlalche.me/e/20/gkpj)'} 
+
+2024-10-01 20:44:09,497 - DEBUG 
+Создаем продукт
+{'data': Product(name='apple', description='red', price=1, amount=1)} 
+
+2024-10-01 20:44:09,618 - ERROR 
+Ошибка при внесении изменений в базу данных
+{'error': '(psycopg2.errors.NotNullViolation) ОШИБКА:  нулевое значение в столбце "id" нарушает ограничение NOT NULL\nDETAIL:  Ошибочная строка содержит (null, apple, red, 1, 1).\n\n[SQL: INSERT INTO "Product" (name, description, price, amount) VALUES (%(name)s, %(description)s, %(price)s, %(amount)s) RETURNING "Product".id]\n[parameters: {\'name\': \'apple\', \'description\': \'red\', \'price\': 1, \'amount\': 1}]\n(Background on this error at: https://sqlalche.me/e/20/gkpj)'} 
+
+2024-10-01 20:44:09,618 - ERROR 
+Ошибка при внесении изменений в базу данных
+{'error': '(psycopg2.errors.NotNullViolation) ОШИБКА:  нулевое значение в столбце "id" нарушает ограничение NOT NULL\nDETAIL:  Ошибочная строка содержит (null, apple, red, 1, 1).\n\n[SQL: INSERT INTO "Product" (name, description, price, amount) VALUES (%(name)s, %(description)s, %(price)s, %(amount)s) RETURNING "Product".id]\n[parameters: {\'name\': \'apple\', \'description\': \'red\', \'price\': 1, \'amount\': 1}]\n(Background on this error at: https://sqlalche.me/e/20/gkpj)'} 
+
+2024-10-01 20:47:12,287 - DEBUG 
+Создаем продукт
+{'data': Product(name='autoincrement', description='autoincrement', price=1, amount=1)} 
+
+2024-10-01 20:47:12,345 - ERROR 
+Ошибка при внесении изменений в базу данных
+{'error': '(psycopg2.errors.NotNullViolation) ОШИБКА:  нулевое значение в столбце "id" нарушает ограничение NOT NULL\nDETAIL:  Ошибочная строка содержит (null, autoincrement, autoincrement, 1, 1).\n\n[SQL: INSERT INTO "Product" (name, description, price, amount) VALUES (%(name)s, %(description)s, %(price)s, %(amount)s) RETURNING "Product".id]\n[parameters: {\'name\': \'autoincrement\', \'description\': \'autoincrement\', \'price\': 1, \'amount\': 1}]\n(Background on this error at: https://sqlalche.me/e/20/gkpj)'} 
+
+2024-10-01 20:47:12,345 - ERROR 
+Ошибка при внесении изменений в базу данных
+{'error': '(psycopg2.errors.NotNullViolation) ОШИБКА:  нулевое значение в столбце "id" нарушает ограничение NOT NULL\nDETAIL:  Ошибочная строка содержит (null, autoincrement, autoincrement, 1, 1).\n\n[SQL: INSERT INTO "Product" (name, description, price, amount) VALUES (%(name)s, %(description)s, %(price)s, %(amount)s) RETURNING "Product".id]\n[parameters: {\'name\': \'autoincrement\', \'description\': \'autoincrement\', \'price\': 1, \'amount\': 1}]\n(Background on this error at: https://sqlalche.me/e/20/gkpj)'} 
+
+2024-10-01 20:47:39,825 - DEBUG 
+Создаем продукт
+{'data': Product(name='autoincrement', description='autoincrement', price=1, amount=1)} 
+
+2024-10-01 20:47:39,936 - ERROR 
+Ошибка при внесении изменений в базу данных
+{'error': '(psycopg2.errors.NotNullViolation) ОШИБКА:  нулевое значение в столбце "id" нарушает ограничение NOT NULL\nDETAIL:  Ошибочная строка содержит (null, autoincrement, autoincrement, 1, 1).\n\n[SQL: INSERT INTO "Product" (name, description, price, amount) VALUES (%(name)s, %(description)s, %(price)s, %(amount)s) RETURNING "Product".id]\n[parameters: {\'name\': \'autoincrement\', \'description\': \'autoincrement\', \'price\': 1, \'amount\': 1}]\n(Background on this error at: https://sqlalche.me/e/20/gkpj)'} 
+
+2024-10-01 20:47:39,936 - ERROR 
+Ошибка при внесении изменений в базу данных
+{'error': '(psycopg2.errors.NotNullViolation) ОШИБКА:  нулевое значение в столбце "id" нарушает ограничение NOT NULL\nDETAIL:  Ошибочная строка содержит (null, autoincrement, autoincrement, 1, 1).\n\n[SQL: INSERT INTO "Product" (name, description, price, amount) VALUES (%(name)s, %(description)s, %(price)s, %(amount)s) RETURNING "Product".id]\n[parameters: {\'name\': \'autoincrement\', \'description\': \'autoincrement\', \'price\': 1, \'amount\': 1}]\n(Background on this error at: https://sqlalche.me/e/20/gkpj)'} 
+
+2024-10-01 20:49:52,408 - DEBUG 
+Создаем продукт
+{'data': Product(name='string', description='string', price=1, amount=1)} 
+
+2024-10-01 20:49:52,520 - ERROR 
+Ошибка при внесении изменений в базу данных
+{'error': '(psycopg2.errors.NotNullViolation) ОШИБКА:  нулевое значение в столбце "id" нарушает ограничение NOT NULL\nDETAIL:  Ошибочная строка содержит (null, string, string, 1, 1).\n\n[SQL: INSERT INTO "Product" (name, description, price, amount) VALUES (%(name)s, %(description)s, %(price)s, %(amount)s) RETURNING "Product".id]\n[parameters: {\'name\': \'string\', \'description\': \'string\', \'price\': 1, \'amount\': 1}]\n(Background on this error at: https://sqlalche.me/e/20/gkpj)'} 
+
+2024-10-01 20:49:52,520 - ERROR 
+Ошибка при внесении изменений в базу данных
+{'error': '(psycopg2.errors.NotNullViolation) ОШИБКА:  нулевое значение в столбце "id" нарушает ограничение NOT NULL\nDETAIL:  Ошибочная строка содержит (null, string, string, 1, 1).\n\n[SQL: INSERT INTO "Product" (name, description, price, amount) VALUES (%(name)s, %(description)s, %(price)s, %(amount)s) RETURNING "Product".id]\n[parameters: {\'name\': \'string\', \'description\': \'string\', \'price\': 1, \'amount\': 1}]\n(Background on this error at: https://sqlalche.me/e/20/gkpj)'} 
+
+2024-10-01 20:51:53,627 - DEBUG 
+Создаем продукт
+{'data': Product(name='string', description='string', price=1, amount=1)} 
+
+2024-10-01 20:51:53,877 - ERROR 
+Ошибка при внесении изменений в базу данных
+{'error': '(psycopg2.errors.UniqueViolation) ОШИБКА:  повторяющееся значение ключа нарушает ограничение уникальности "Product_pkey"\nDETAIL:  Ключ "(id)=(1)" уже существует.\n\n[SQL: INSERT INTO "Product" (name, description, price, amount) VALUES (%(name)s, %(description)s, %(price)s, %(amount)s) RETURNING "Product".id]\n[parameters: {\'name\': \'string\', \'description\': \'string\', \'price\': 1, \'amount\': 1}]\n(Background on this error at: https://sqlalche.me/e/20/gkpj)'} 
+
+2024-10-01 20:51:53,877 - ERROR 
+Ошибка при внесении изменений в базу данных
+{'error': '(psycopg2.errors.UniqueViolation) ОШИБКА:  повторяющееся значение ключа нарушает ограничение уникальности "Product_pkey"\nDETAIL:  Ключ "(id)=(1)" уже существует.\n\n[SQL: INSERT INTO "Product" (name, description, price, amount) VALUES (%(name)s, %(description)s, %(price)s, %(amount)s) RETURNING "Product".id]\n[parameters: {\'name\': \'string\', \'description\': \'string\', \'price\': 1, \'amount\': 1}]\n(Background on this error at: https://sqlalche.me/e/20/gkpj)'} 
+
+2024-10-01 20:52:37,822 - DEBUG 
+Создаем продукт
+{'data': Product(name='string', description='string', price=1, amount=1)} 
+
+2024-10-01 20:53:37,720 - DEBUG 
+Получаем инфу о товаре 
+
+2024-10-01 20:57:23,339 - DEBUG 
+Обновляем инфу о товаре 
+
+2024-10-01 20:58:59,947 - DEBUG 
+Обновляем инфу о товаре 
+
+2024-10-01 20:59:44,457 - DEBUG 
+Обновляем инфу о товаре 
+
+2024-10-01 21:00:05,572 - DEBUG 
+Обновляем инфу о товаре 
+
+2024-10-01 21:07:09,789 - DEBUG 
+Удаляем инфу о товаре 
+
+2024-10-01 21:07:57,957 - DEBUG 
+Удаляем инфу о товаре 
+
+2024-10-01 21:09:08,132 - DEBUG 
+Удаляем инфу о товаре 
+
+2024-10-01 21:09:26,232 - DEBUG 
+Удаляем инфу о товаре 
+
+2024-10-01 21:10:04,858 - DEBUG 
+Получаем список заказов 
+
+2024-10-01 21:11:03,126 - DEBUG 
+Получаем список заказов 
+
+2024-10-01 21:15:14,358 - DEBUG 
+Получаем список заказов 
+
+2024-10-01 21:15:29,822 - DEBUG 
+Получаем список заказов 
+
+2024-10-01 21:16:02,236 - DEBUG 
+Получаем список заказов 
+
+2024-10-01 21:16:35,731 - DEBUG 
+Получаем заказ по айди 
+
+2024-10-01 21:16:36,834 - DEBUG 
+Получаем заказ по айди 
+
+2024-10-01 21:16:55,367 - DEBUG 
+Получаем заказ по айди 
+
+2024-10-01 21:17:06,219 - DEBUG 
+Получаем заказ по айди 
+
+2024-10-01 21:17:34,623 - DEBUG 
+Получаем заказ по айди 
+
+2024-10-01 21:18:06,362 - DEBUG 
+Получаем список продуктов 
+
+2024-10-01 21:19:14,023 - DEBUG 
+Создаем заказ
+{'data': Order(date='string', stats='string', p_id=3, amount=0)} 
+
+2024-10-01 21:26:06,665 - DEBUG 
+Создаем заказ
+{'data': Order(date='2023-01-02', stats='start', p_id=3, amount=2)} 
+
+2024-10-01 21:26:25,976 - DEBUG 
+Создаем заказ
+{'data': Order(date='2023-01-02', stats='start', p_id=3, amount=2)} 
+
+2024-10-01 21:27:20,781 - DEBUG 
+Создаем заказ
+{'data': Order(date='2023-01-02', status='start', p_id=3, amount=2)} 
+
+2024-10-01 21:27:48,859 - DEBUG 
+Создаем заказ
+{'data': Order(date='2023-01-02', status='start', p_id=3, amount=2)} 
+
+2024-10-01 21:27:49,224 - ERROR 
+Ошибка при создании заказа
+{'error': "'order_id' is an invalid keyword argument for Product"} 
+
+2024-10-01 21:27:49,224 - ERROR 
+Ошибка при создании заказа
+{'error': "'order_id' is an invalid keyword argument for Product"} 
+
+2024-10-01 21:28:36,695 - DEBUG 
+Создаем заказ
+{'data': Order(date='2023-01-02', status='start', p_id=3, amount=2)} 
+
+2024-10-01 21:28:36,875 - ERROR 
+Ошибка при создании заказа
+{'error': "'OrderItem' object is not iterable"} 
+
+2024-10-01 21:28:36,875 - ERROR 
+Ошибка при создании заказа
+{'error': "'OrderItem' object is not iterable"} 
+
+2024-10-01 21:28:48,925 - DEBUG 
+Создаем заказ
+{'data': Order(date='2023-01-02', status='start', p_id=3, amount=2)} 
+
+2024-10-01 21:31:02,345 - DEBUG 
+Получаем заказ по айди 
+
+2024-10-01 21:31:20,390 - DEBUG 
+Обновляем статус заказа 
+

@@ -1,13 +1,13 @@
-from DataBase import get_session, Order, OrderItem, Product
+from data_base import get_session, Order, OrderItem, Product
 from logger import log_event
 import json
 
 
-def check_product_amount(p_id) -> bool:
+def check_product_amount(p_id,amount) -> bool:
     session = get_session()
-    item = session.query(Product).filter(Product.id == p_id).one_or_none()
-    if item:
-        item.amount -= 1
+    item = session.query(Product).filter(Product.id == p_id).first()
+    if item.amount - amount>=0:
+        item.amount -= amount
         session.close()
         return True
     session.close()
@@ -17,12 +17,12 @@ def check_product_amount(p_id) -> bool:
 def create_product(data) -> dict:
     session = get_session()
     new_product = Product(
-        name=data['name'],
-        description=data['description'],
-        price=data['price'],
-        amount=data['amount']
+        name=data.name,
+        description=data.description,
+        price=data.price,
+        amount=data.amount
     )
-    session.add_all(new_product)
+    session.add(new_product)
     try:
         session.commit()
         session.close()
@@ -30,18 +30,26 @@ def create_product(data) -> dict:
     except Exception as exc:
         session.close()
         log_event("Ошибка при внесении изменений в базу данных", 40, error=str(exc))
-        return {"product_creation": "error","desc":exc}
-
+        return {"product_creation": "error", "desc": exc}
 
 
 def get_product_list(id=None) -> dict:
     session = get_session()
     if id != None:
-        info = session.query(Product).filter(Product.id == id)
-        results_json = json.dumps([item.to_dict() for item in info])
-        return json.loads(results_json)
+        product = session.query(Product).filter(Product.id == id).first()
+        return {'id': product.id, 'name': product.name, 'description': product.description,
+                'price': str(product.price),
+                'amount': product.amount
+                }
     info = session.query(Product).all()
-    results_json = json.dumps([item.to_dict() for item in info])
+    products_list = [{
+        'id': product.id,
+        'name': product.name,
+        'description': product.description,
+        'price': str(product.price),
+        'amount': product.amount
+    } for product in info]
+    results_json = json.dumps(products_list)
     return json.loads(results_json)
 
 
@@ -49,10 +57,10 @@ def update_product(id, data) -> dict:
     session = get_session()
     item = session.query(Product).filter(Product.id == id).first()
 
-    if data["name"] is not None: item.name = data["name"]
-    if data["description"] is not None: item.description = data["description"]
-    if data["amount"] is not None: item.amount = data["amount"]
-    if data["price"] is not None: item.price = data["price"]
+    if data.name is not None: item.name = data.name
+    if data.description is not None: item.description = data.description
+    if data.amount is not None: item.amount = data.amount
+    if data.price is not None: item.price = data.price
 
     try:
         session.commit()
@@ -63,10 +71,11 @@ def update_product(id, data) -> dict:
         log_event("Ошибка при обновлении информации о товаре", 40, error=exc)
         return {"product_update": "error"}
 
+
 def delete_product(id):
     session = get_session()
     item = session.query(Product).filter(Product.id == id).first()
-    item.delete()
+    session.delete(item)
     try:
         session.commit()
         session.close()
@@ -74,18 +83,18 @@ def delete_product(id):
     except Exception as exc:
         session.close()
         log_event("Ошибка при удалении информации о товаре", 40, error=exc)
-        return {"product_delete": "error","desc":exc}
+        return {"product_delete": "error", "desc": exc}
 
 
 def create_orderitem(item_id, order_id, amount) -> None:
     session = get_session()
-    new_order_item = Product(
+    new_order_item = OrderItem(
         order_id=order_id,
         item_id=item_id,
         amount=amount
     )
 
-    session.add_all(new_order_item)
+    session.add(new_order_item)
     try:
         session.commit()
         session.close()
@@ -96,42 +105,69 @@ def create_orderitem(item_id, order_id, amount) -> None:
 
 def create_order(data) -> dict:
     session = get_session()
-    new_order = Product(
-        date=data['date'],
-        status=data['price'],
+    new_order = Order(
+        date=data.date,
+        status=data.status,
     )
 
-    session.add_all(new_order)
+    session.add(new_order)
     try:
         session.commit()
-        order = session.query(Order).first()
-        create_orderitem(data["p_id"], order.id, data["amount"])
+        order = session.query(Order).order_by(Order.id.desc()).first()
+        create_orderitem(data.p_id, order.id, data.amount)
         session.close()
         return {"order_creation": "success"}
     except Exception as exc:
         session.close()
         log_event("Ошибка при создании заказа", 40, error=str(exc))
-        return {"order_creation": "error","desc":exc}
+        return {"order_creation": "error", "desc": exc}
+
+
+def get_product_list(id=None) -> dict:
+    session = get_session()
+    if id != None:
+        product = session.query(Product).filter(Product.id == id).first()
+        return {'id': product.id, 'name': product.name, 'description': product.description,
+                'price': str(product.price),
+                'amount': product.amount
+                }
+    info = session.query(Product).all()
+    products_list = [{
+        'id': product.id,
+        'name': product.name,
+        'description': product.description,
+        'price': str(product.price),
+        'amount': product.amount
+    } for product in info]
+    results_json = json.dumps(products_list)
+    return json.loads(results_json)
 
 
 def get_order_list(id=None):
     session = get_session()
     if id != None:
-        info = session.query(Order).filter(Order.id == id)
-        results_json = json.dumps([item.to_dict() for item in info])
+        order = session.query(Order).filter(Order.id == id).first()
         session.close()
-        return json.loads(results_json)
-    info = session.query(Order).all()
-    results_json = json.dumps([item.to_dict() for item in info])
-    session.close()
+        return {
+            'date': order.date, 'status': order.status
+        }
+    orders = session.query(Order).all()
+
+    orders_list = [{
+        'id': order.id,
+        'date': str(order.date),
+        'status': order.status
+    } for order in orders]
+
+    results_json = json.dumps(orders_list)
     return json.loads(results_json)
 
-def update_order_status(id,status):
+
+def update_order_status(id, status):
     session = get_session()
     item = session.query(Order).filter(Order.id == id).first()
 
-    if status is not None: item.status=status
-
+    if status is not None: item.status = status
 
     try:
         session.commit()
@@ -140,4 +176,4 @@ def update_order_status(id,status):
     except Exception as exc:
         session.close()
         log_event("Ошибка при обновлении информации о статусе заказа", 40, error=exc)
-        return {"order_status_update": "error","desc":exc}
+        return {"order_status_update": "error", "desc": exc}

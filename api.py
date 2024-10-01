@@ -9,19 +9,19 @@ from typing import Optional
 app = FastAPI()
 class Product(BaseModel):
     name:str
-    decs:str
+    description:str
     price:int
     amount:int
 
 class ProductUpdate(BaseModel):
     name:Optional[str] = None
-    decs:Optional[str] = None
+    description:Optional[str] = None
     price:Optional[int] = None
     amount:Optional[int] = None
 
 class Order(BaseModel):
     date:str
-    stats:str
+    status:str
     p_id:int
     amount:int
 
@@ -60,7 +60,7 @@ def dlt_product(id):
 @app.post("/orders")
 def crt_order(data:Order):
     log_event('Создаем заказ',10,data=data)
-    if check_product_amount(data['order_id']):
+    if check_product_amount(data.p_id,data.amount):
         return create_order(data)
     return {"order_creation":"error","desc":"закончились"}
 
@@ -77,7 +77,7 @@ def list_product(id):
 @app.patch("/orders/{id}/status")
 def list_product(id,data:OrderUpdate):
     log_event('Обновляем статус заказа',10)
-    return update_order_status(id,data["status"])
+    return update_order_status(id,data.status)
 
 
 
