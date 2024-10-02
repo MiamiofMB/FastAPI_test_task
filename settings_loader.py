@@ -13,11 +13,8 @@ def load_json(file_name):
 
 
 def get_processor_settings():
-    settings = load_json('settings.json' )
+    settings = load_json('settings.json')
     return settings
 
 
-
 settings = get_processor_settings()
-
-

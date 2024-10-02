@@ -13,9 +13,9 @@ Error (40): этот уровень логирования предусматр�
 Critical (50): этот уровень используется для вывода сведений об очень серьёзных ошибках, наличие которых угрожает нормальному функционированию всего приложения. Если не исправить такую ошибку — это может привести к тому, что приложение прекратит работу.
 '''
 
-def setup_custom_logger(name):
 
-    debug_format_string = '%(asctime)s - %(levelname)s \n'\
+def setup_custom_logger(name):
+    debug_format_string = '%(asctime)s - %(levelname)s \n' \
                           '%(message)s \n'
 
     debug_formatter = logging.Formatter(debug_format_string)
@@ -44,9 +44,9 @@ def setup_custom_logger(name):
 
 custom_logger = setup_custom_logger('combined')
 
-def log_event(event_description: str, log_level=logging.DEBUG, **kwargs) -> None:
 
+def log_event(event_description: str, log_level=logging.DEBUG, **kwargs) -> None:
     full_event_description = event_description if not kwargs else event_description + '\n' + str(kwargs)
-    #print(full_event_description)
+    # print(full_event_description)
     custom_logger.log(log_level, full_event_description)
-    #errors_logger.log(log_level, full_event_description)
+    # errors_logger.log(log_level, full_event_description)

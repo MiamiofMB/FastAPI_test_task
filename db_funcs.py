@@ -3,10 +3,10 @@ from logger import log_event
 import json
 
 
-def check_product_amount(p_id,amount) -> bool:
+def check_product_amount(p_id, amount) -> bool:
     session = get_session()
     item = session.query(Product).filter(Product.id == p_id).first()
-    if item.amount - amount>=0:
+    if item.amount - amount >= 0:
         item.amount -= amount
         session.close()
         return True
@@ -123,29 +123,10 @@ def create_order(data) -> dict:
         return {"order_creation": "error", "desc": exc}
 
 
-def get_product_list(id=None) -> dict:
-    session = get_session()
-    if id != None:
-        product = session.query(Product).filter(Product.id == id).first()
-        return {'id': product.id, 'name': product.name, 'description': product.description,
-                'price': str(product.price),
-                'amount': product.amount
-                }
-    info = session.query(Product).all()
-    products_list = [{
-        'id': product.id,
-        'name': product.name,
-        'description': product.description,
-        'price': str(product.price),
-        'amount': product.amount
-    } for product in info]
-    results_json = json.dumps(products_list)
-    return json.loads(results_json)
-
 
 def get_order_list(id=None):
     session = get_session()
-    if id != None:
+    if id is not None:
         order = session.query(Order).filter(Order.id == id).first()
         session.close()
         return {
