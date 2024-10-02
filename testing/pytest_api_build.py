@@ -4,7 +4,9 @@ from pydantic import BaseModel
 from db_funcs import check_product_amount, get_product_list, update_product, delete_product, create_product, \
     create_order, get_order_list, update_order_status
 from logger import log_event
+from fastapi.testclient import TestClient
 from typing import Optional
+import pytest
 
 app = FastAPI()
 
@@ -88,6 +90,13 @@ def list_product(id):
 def list_product(id, data: OrderUpdate):
     log_event('Обновляем статус заказа', 10)
     return update_order_status(id, data.status)
+
+client = TestClient(app)
+
+def test_read_item():
+    response = client.get("/orders")
+    assert response.status_code == 200
+    assert response.json() == {"item_id": 42}
 
 
 if __name__ == "__main__":
