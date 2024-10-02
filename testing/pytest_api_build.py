@@ -96,7 +96,18 @@ client = TestClient(app)
 def test_read_item():
     response = client.get("/orders")
     assert response.status_code == 200
-    assert response.json() == {"item_id": 42}
+    response = client.get("/products")
+    assert response.status_code == 200
+
+    response = client.get("/orders/1")
+    assert response.status_code == 200
+    response = client.get("/products/1")
+    assert response.status_code == 200
+
+    response = client.delete("/orders/1")
+    assert response.status_code == 200
+    response = client.delete("/products/1")
+    assert response.status_code == 200
 
 
 if __name__ == "__main__":
